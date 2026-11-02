@@ -2,101 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* MotoLab — Cyber Industrial / Motorsport design system.
+   All colors are HSL channel triplets for Tailwind hsl(var(--x)) usage. */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Surfaces */
+    --background: 216 23% 5%;        /* #0B0D10 main background */
+    --foreground: 207 26% 93%;       /* #E9EEF2 primary text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 212 24% 12%;             /* #181F27 panel background */
+    --card-foreground: 207 26% 93%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 210 24% 9%;           /* #12171D secondary background */
+    --popover-foreground: 207 26% 93%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
+    /* Accents */
+    --primary: 93 100% 74%;          /* #B4FF78 acid green */
+    --primary-foreground: 216 30% 8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 190 89% 65%;        /* #55D9F5 cyan */
+    --secondary-foreground: 216 30% 8%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 212 22% 16%;
+    --muted-foreground: 210 14% 59%; /* #8996A3 secondary text */
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 93 100% 74%;
+    --accent-foreground: 216 30% 8%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 56%;        /* critical red */
+    --destructive-foreground: 207 26% 96%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 217 91% 60%;
-    
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(200 90% 50%));
-    --shadow-elegant: 0 10px 30px -10px hsl(217 91% 60% / 0.3);
+    --warning: 38 92% 55%;           /* amber/orange */
+    --warning-foreground: 216 30% 8%;
 
-    --radius: 0.5rem;
+    --border: 212 22% 20%;
+    --input: 212 22% 18%;
+    --ring: 93 100% 74%;
 
-    --sidebar-background: 0 0% 98%;
+    --radius: 0.25rem;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 217 91% 60%;
-    
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(200 90% 50%));
-    --shadow-elegant: 0 10px 30px -10px hsl(217 91% 60% / 0.3);
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 210 24% 9%;
+    --sidebar-foreground: 210 14% 59%;
+    --sidebar-primary: 93 100% 74%;
+    --sidebar-primary-foreground: 216 30% 8%;
+    --sidebar-accent: 212 24% 12%;
+    --sidebar-accent-foreground: 207 26% 93%;
+    --sidebar-border: 212 22% 16%;
+    --sidebar-ring: 93 100% 74%;
   }
 }
 
@@ -105,7 +58,51 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    color-scheme: dark;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  /* Technical monospace for numeric / diagnostic readouts */
+  .font-mono,
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* Hairline technical separator */
+  .tech-divider {
+    @apply h-px w-full;
+    background: linear-gradient(
+      to right,
+      transparent,
+      hsl(var(--border)),
+      transparent
+    );
+  }
+
+  /* Subtle scanline / grid backdrop for panels */
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.25) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.25) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .panel {
+    @apply bg-card border border-border/80;
+  }
+
+  .stat-value {
+    @apply font-mono tabular text-2xl font-semibold tracking-tight text-foreground;
+  }
+
+  .label-tech {
+    @apply text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground;
   }
 }
